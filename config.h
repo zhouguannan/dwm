@@ -168,6 +168,7 @@ static Key keys[] = {
 	{ MODKEY,              XK_b,                    spawn,          {.v = wpcmd } },
 //	{ MODKEY,              XK_comma,                spawn,          {.v = decbacklightcmd } },
 //	{ MODKEY,              XK_period,               spawn,          {.v = incbacklightcmd } },
+	{ MODKEY,                   XK_y,                spawn,          {.v = screenshotcmd } },
 	{ MODKEY|ShiftMask,    XK_e,                    rotatestack,    {.i = +1 } },
 	{ MODKEY|ShiftMask,    XK_u,                    rotatestack,    {.i = -1 } },
 	{ MODKEY,              XK_j,                    focusstack,     {.i = +1 } },
