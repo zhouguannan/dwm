@@ -140,7 +140,7 @@ static Key keys[] = {
 	{ MODKEY|ControlMask,                       XK_o,      setlayout,      {.v = &layouts[4]} },
 	{ MODKEY|ControlMask,           XK_u,      setlayout,      {.v = &layouts[5]} },
 	{ MODKEY|ControlMask,           XK_o,      setlayout,      {.v = &layouts[6]} },
-	{ MODKEY,                       XK_g,      setlayout,      {.v = &layouts[7]} },
+	{ MODKEY,                       XK_g,      setlayout,      {.v = &layouts[3]} },
 //  { MODKEY,              XK_Return,               spawn,          {.v = mailcmd} },
 	{ MODKEY,              XK_s,                    spawn,          {.v = searchcmd } },
 	
