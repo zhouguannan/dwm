@@ -1,5 +1,7 @@
 #include <X11/XF86keysym.h>
 #include "layouts.c"
+#include "tcl.c"
+
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
@@ -71,10 +73,13 @@ static const int resizehints = 1;    /* 1 means respect size hints in tiled resi
 
 static const Layout layouts[] = {
 	/* symbol     arrange function */
-	{ "Tile",      tile },    /* first entry is default */
-	{ "Null",      NULL },    /* no layout function means floating behavior */
-	{ "Mono",      monocle },
-  { "Grid",      grid },
+	{ "Tile",     tile },    /* first entry is default */
+	{ "Null",     NULL },    /* no layout function means floating behavior */
+	{ "Mono",     monocle },
+  { "Grid",     grid },
+  { "|||",      tcl },
+  { "TTT",      bstack },      
+  { "===",      bstackhoriz }, 
 };
 
 /* key definitions */
@@ -135,10 +140,12 @@ static Key keys[] = {
 	{ MODKEY|ControlMask,                       XK_o,      setlayout,      {.v = &layouts[4]} },
 	{ MODKEY|ControlMask,           XK_u,      setlayout,      {.v = &layouts[5]} },
 	{ MODKEY|ControlMask,           XK_o,      setlayout,      {.v = &layouts[6]} },
-	{ MODKEY|ControlMask,                       XK_g,      setlayout,      {.v = &layouts[7]} },
+	{ MODKEY,                       XK_g,      setlayout,      {.v = &layouts[7]} },
 //  { MODKEY,              XK_Return,               spawn,          {.v = mailcmd} },
 	{ MODKEY,              XK_s,                    spawn,          {.v = searchcmd } },
 	
+{ MODKEY,                       XK_o,      setlayout,      {.v = &layouts[5]} },   
+{ MODKEY,                       XK_p,      setlayout,      {.v = &layouts[4]} },   
 	{ MODKEY,              XK_c,                    spawn,          {.v = browsercmd } },
 	{ MODKEY,              XK_c,                    spawn,          {.v = fctixcmd } },
     { MODKEY,              XK_c,                    spawn,          {.v = bluetcmd} },
@@ -161,7 +168,6 @@ static Key keys[] = {
 	{ MODKEY,              XK_b,                    spawn,          {.v = wpcmd } },
 //	{ MODKEY,              XK_comma,                spawn,          {.v = decbacklightcmd } },
 //	{ MODKEY,              XK_period,               spawn,          {.v = incbacklightcmd } },
-	{ MODKEY,                   XK_p,                spawn,          {.v = screenshotcmd } },
 	{ MODKEY|ShiftMask,    XK_e,                    rotatestack,    {.i = +1 } },
 	{ MODKEY|ShiftMask,    XK_u,                    rotatestack,    {.i = -1 } },
 	{ MODKEY,              XK_j,                    focusstack,     {.i = +1 } },

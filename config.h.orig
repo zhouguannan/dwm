@@ -3,7 +3,7 @@
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
-static const unsigned int borderpx  = 2;        /* border pixel of windows */
+static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const unsigned int systraypinning = 0;   /* 0: sloppy systray follows selected monitor, >0: pin systray to monitor X */
 static const unsigned int systrayspacing = 3;   /* systray spacing */
@@ -54,9 +54,11 @@ static const Rule rules[] = {
 	 */
 	/* class                 instance    title       tags mask     isfloating   monitor */
 	{ "Android Emulator",    NULL,       NULL,       0,            1,           -1 },
-	{ "Thunar",              NULL,       NULL,       0,            1,           -1 },
+	{ "vlc",    NULL,       NULL,       0,            1,           -1 },
+{ "mpv",    NULL,       NULL,       0,            1,           -1 },
+{ "Thunar",              NULL,       NULL,       0,            1,           -1 },
 	{ "Mousepad",              NULL,       NULL,       0,            1,           -1 },
-
+  { "Catfish",              NULL,       NULL,       0,            1,           -1 },
 	{ "Emulator",            NULL,       NULL,       0,            1,           -1 },
 	{ "quemu-system-i386",   NULL,       NULL,       0,            1,           -1 },
 	{ "Firefox",             NULL,       NULL,       1 << 8,       0,           -1 },
@@ -159,7 +161,7 @@ static Key keys[] = {
 	{ MODKEY,              XK_b,                    spawn,          {.v = wpcmd } },
 //	{ MODKEY,              XK_comma,                spawn,          {.v = decbacklightcmd } },
 //	{ MODKEY,              XK_period,               spawn,          {.v = incbacklightcmd } },
-	{ 0,                   XK_Print,                spawn,          {.v = screenshotcmd } },
+	{ MODKEY,                   XK_p,                spawn,          {.v = screenshotcmd } },
 	{ MODKEY|ShiftMask,    XK_e,                    rotatestack,    {.i = +1 } },
 	{ MODKEY|ShiftMask,    XK_u,                    rotatestack,    {.i = -1 } },
 	{ MODKEY,              XK_j,                    focusstack,     {.i = +1 } },
@@ -179,8 +181,9 @@ static Key keys[] = {
 	{ MODKEY,              XK_Tab,                  view,           {0} },
 	{ MODKEY,   	       XK_q,                    killclient,     {0} },
 	{ MODKEY,              XK_t,                    setlayout,      {.v = &layouts[0]} },
-    { MODKEY,              XK_g,                    setlayout,      {.v = &layouts[1]} },
+    { MODKEY,              XK_f,                    setlayout,      {.v = &layouts[1]} },
 	{ MODKEY,              XK_m,                    setlayout,      {.v = &layouts[2]} },
+{ MODKEY,                       XK_g,      setlayout,      {.v = &layouts[3]} },
 	{ MODKEY,    	       XK_f,                    fullscreen,     {0} },
 	{ MODKEY,              XK_space,                setlayout,      {0} },
 	{ MODKEY|ShiftMask,    XK_space,                togglefloating, {0} },
