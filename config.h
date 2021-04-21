@@ -1,7 +1,6 @@
 #include <X11/XF86keysym.h>
 #include "layouts.c"
 #include "tcl.c"
-
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
@@ -30,7 +29,7 @@ static const char col_gray3[]       = "#bbbbbb";
 static const char col_gray4[]       = "#ffffff";
 static const char col_cyan[]        = "#37474F";
 static const char col_border[]      = "#FF75BC";
-static const unsigned int baralpha = 0x9E;
+static const unsigned int baralpha = 0x67;
 static const unsigned int borderalpha = OPAQUE;
   /* 1 means respect size hints in tiled resizals */      
 static const char *colors[][3]      = {
