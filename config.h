@@ -78,7 +78,9 @@ static const Layout layouts[] = {
   { "Grid",     grid },
   { "|||",      tcl },
   { "TTT",      bstack },      
-  { "===",      bstackhoriz }, 
+  { "===",      bstackhoriz },
+  { "|M|",      centeredmaster },         
+  { ">M>",      centeredfloatingmaster }, 
 };
 
 /* key definitions */
@@ -132,8 +134,8 @@ static Key keys[] = {
     { MODKEY,              XK_Return,               spawn,          {.v = bluetcmd} },
     { MODKEY,              XK_i,      				incnmaster,     {.i = +1 } },
 	{ MODKEY,              XK_u,      				incnmaster,     {.i = -1 } },
-  { MODKEY|ControlMask,                       XK_t,      setlayout,      {.v = &layouts[0]} },
-	{ MODKEY|ControlMask,                       XK_f,      setlayout,      {.v = &layouts[1]} },
+  { MODKEY|ControlMask,                       XK_r,      setlayout,      {.v = &layouts[7]} },
+	{ MODKEY|ControlMask,                       XK_t,      setlayout,      {.v = &layouts[8]} },
 	{ MODKEY|ControlMask,                       XK_m,      setlayout,      {.v = &layouts[2]} },
 	{ MODKEY|ControlMask,                       XK_u,      setlayout,      {.v = &layouts[3]} },
 	{ MODKEY|ControlMask,                       XK_o,      setlayout,      {.v = &layouts[4]} },
