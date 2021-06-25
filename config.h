@@ -31,6 +31,8 @@ static const char col_cyan[]        = "#37474F";
 static const char col_border[]      = "#FF75BC";
 static const unsigned int baralpha = 0x67;
 static const unsigned int borderalpha = OPAQUE;
+static const int swallowfloating    = 0;        /* 1 means swallow floating windows by default */
+
   /* 1 means respect size hints in tiled resizals */      
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
@@ -53,16 +55,18 @@ static const Rule rules[] = {
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class                 instance    title       tags mask     isfloating   monitor */
-	{ "Android Emulator",    NULL,       NULL,       0,            1,           -1 },
-	{ "vlc",    NULL,       NULL,       0,            1,           -1 },
-{ "mpv",    NULL,       NULL,       0,            1,           -1 },
-{ "Thunar",              NULL,       NULL,       0,            1,           -1 },
-	{ "Mousepad",              NULL,       NULL,       0,            1,           -1 },
-  { "Catfish",              NULL,       NULL,       0,            1,           -1 },
-	{ "Emulator",            NULL,       NULL,       0,            1,           -1 },
-	{ "quemu-system-i386",   NULL,       NULL,       0,            1,           -1 },
-	{ "Firefox",             NULL,       NULL,       1 << 8,       0,           -1 },
+	/* class                 instance    title       tags mask     isfloating isterminal noswallow  monitor */
+	{ "Android Emulator",   NULL,       NULL,       0,            1,           0 ,        0,     -1 },
+	{ "vlc",								NULL,       NULL,       0,            1,           0 ,        0,     -1 },
+	{ "mpv",								NULL,       NULL,       0,            1,            0,        0,     -1 },
+	{ "Thunar",             NULL,       NULL,       0,            1,            0,        0,     -1 },
+	{ "Mousepad",						NULL,       NULL,       0,            1,            0,        0,     -1 },
+  { "Catfish",            NULL,       NULL,       0,            1,            0,        0,     -1 },
+	{ "Emulator",           NULL,       NULL,       0,            1,            0,        0,     -1 },
+	{ "quemu-system-i386",  NULL,       NULL,       0,            1,            0,        0,     -1 },
+	{ "Firefox",            NULL,       NULL,       1 << 8,       0,            0,        0,     -1 },
+	{ "St",      NULL,     NULL,           0,         0,          1,           0,        -1 },
+	{ NULL,      NULL,     "Event Tester", 0,         0,          0,           1,        -1 }, /* xev */
 };
 
 /* layout(s) */
@@ -121,6 +125,7 @@ static const char *suspendcmd[]  = { "/home/kevin/scripts/suspend.sh", NULL };
 
 static const char *screenlockcmd[]  = { "/home/kevin/scripts/screenlock.sh", NULL};
 
+static const char *soundcmd[]  = { "pavucontrol", NULL};
 static const char *incbacklightcmd[]  = { "/home/kevin/scripts/inc-backlight.sh", NULL};
 static const char *decbacklightcmd[]  = { "/home/kevin/scripts/dec-backlight.sh", NULL};
 
@@ -156,7 +161,7 @@ static Key keys[] = {
 	{ MODKEY,              XK_l,                    setmfact,       {.f = +0.02} },
 	{ MODKEY, 	           XK_z,			        spawn,		      {.v = nemocmd } },
 	{ MODKEY|ShiftMask,    XK_m,                    spawn,          {.v = setcolemakcmd } },
-	{ MODKEY|ShiftMask,    XK_p,                    spawn,          {.v = suspendcmd } },
+	{ MODKEY|ShiftMask,    XK_p,                    spawn,          {.v = soundcmd } },
 	{ MODKEY|ControlMask,  XK_s,                    spawn,          {.v = sktogglecmd } },
 	{ MODKEY,              XK_f,                    spawn,          {.v = nautilustogcmd } },
 	{ MODKEY|ControlMask,  XK_p,                    spawn,          {.v = screenshotcmd } },
