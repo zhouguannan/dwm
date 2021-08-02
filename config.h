@@ -201,6 +201,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,    XK_space,                togglefloating, {0} },
 	
 { MODKEY|ShiftMask,             XK_g,      setlayout,      {.v = &layouts[3]} },
+{ MODKEY|ShiftMask,             XK_n,      setlayout,      {0} },
   { MODKEY,              XK_apostrophe,           togglescratch,  {.v = scratchpadcmd } },
 	{ MODKEY,              XK_0,                    view,           {.ui = ~0 } },
 	{ MODKEY|ShiftMask,    XK_0,                    tag,            {.ui = ~0 } },
